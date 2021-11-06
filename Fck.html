@@ -33,10 +33,6 @@
 				<i class="fas fa-palette"></i>
 				<span>Change theme</span>
 			</a>
-			<a class="overlay_action" onclick="change_quote();">
-				<i class="fas fa-quote-left"></i>
-				<span>Change Quote</span>
-			</a>
 			<a class="overlay_action" href="https://ltotheois.github.io/LLWP/imprint.html">
 				<i class="fas fa-sync"></i>
 				<span>Imprint & Privacy Policy</span>
@@ -56,9 +52,9 @@
 					<button class="button" onclick="newgame(rounds);">New Game</button>
 				</div>
 				<div class="inline_icon_div">
-					<a class="clickable" onclick="document.getElementById('table').classList.toggle('hide_icons')"><i class="fa fa-eye-slash"></i></a>
-					<a class="clickable" onclick="document.getElementById('table_tile').classList.toggle('hide_cells')"><i class="fas fa-table"></i></a>
-					<a class="clickable" onclick="delete_row(all=true)"><i class="fas fa-trash"></i></a>
+					<!-- <a class="clickable" onclick="document.getElementById('table').classList.toggle('hide_icons')"><i class="fa fa-eye-slash"></i></a> -->
+					<!-- <a class="clickable" onclick="document.getElementById('table_tile').classList.toggle('hide_cells')"><i class="fas fa-table"></i></a> -->
+					<!-- <a class="clickable" onclick="delete_row(all=true)"><i class="fas fa-trash"></i></a> -->
 				</div>
 			</div>
 		<div id="table_container">
@@ -83,9 +79,6 @@
 		<div id="table_container_analysis">
 		</div>
 	</div>
-	
-	<div id="quote1" class="quote" style="opacity:0;"><span></span></div>
-	<div id="quote2" class="quote" style="position:absolute; bottom:0px; left:0px;"><span></span></div>
 	
 	<script>
 	var overlay = document.getElementById('overlay');
@@ -186,7 +179,7 @@
 		}
 		
 		if (complete){
-			analysis({"players": players, "hands": hands, "data": data});
+			analysis({"players": players, "hands": hands, "data": data, "score": score});
 		}
 		
 		return({"players": players, "hands": hands, "data": data});
@@ -224,6 +217,7 @@
 	function analysis(data){
 		var players = data.players;
 		var hands   = data.hands;
+		var score   = data.score;
 		var data    = data.data;
 		
 		<!-- Checke maximale Stichanzahl -->
@@ -232,7 +226,7 @@
 		<!-- Finde die höchste summierte erfolgreiche Anzahl Stiche -->
 		<!-- Tabelle und die einzelnen Highlights -->
 		
-		console.log("Analysis goes here.");
+		window.alert("The game has finished.");
 		
 	}
 
@@ -272,15 +266,9 @@
 		}
 	}
 
-	quotes_str = '["Deine Leute alles Platzpatronen,\\nMeine Leute halten stand wie ein Bataillon\\n-Anis M. Y. Ferchichi", "Was sie rappen ist kein Image, das ist Science Fiction\\n-Anis M. Y. Ferchichi", "Erstens kommt es anders und zweitens als man denkt\\n-Ekrem Bora", "In der Theorie willst du was ver\\u00e4ndern, aber in der Praxis geht alles schief.\\nIn der Theorie wollen wir zu viel, geben aber viel zu wenig, das ist kein fairer Deal.\\n-Anis M. Y. Ferchichi & Jochen Burchard", "Und bist du unten, dr\\u00fccken sie dich noch ein St\\u00fcck tiefer\\nNoch ein St\\u00fcck tiefer\\nNoch ein St\\u00fcck tiefer\\nNoch ein St\\u00fcck tiefer\\n-Anis M. Y. Ferchichi", "Da ting goes skrrrrahh, pap, pap, ka-ka-ka\\nSkidiki-pap-pap, and a pu-pu-pudrrrr-boom\\nSkya, du-du-ku-ku-dun-dun\\nPoom, poom, you dun know\\n-Michael Dapaah", "Einstein, my mind, this MC move white squares with my relatives.\\n-Shawn C. Carter", "Man kann es weder sehen noch ber\\u00fchren, lediglich sp\\u00fcren.\\n-Anis M. Y. Ferchichi", "Dank mir ist das Niveau im Keller, so wie Weinf\\u00e4sser\\n-Anis M. Y. Ferchichi", "Meine Punchlines sind w\\u00e4hlerisch, aber dich zers\\u00e4ge ich\\n-Vladislav Balovatsky", "Bratan l\\u00e4uft, Para und Erfolg\\nGestern war\'n die Platten grau, heute sind sie Gold\\n-Vladislav Balovatsky", "Das Leben ist \'ne Schachtel Pralinen\\nUnd alle kriegen das, was sie verdienen\\nEgal, wie schnell du rennst, vor Gott kannst du nicht fliehen\\nInshallah deine S\\u00fcnden werden verziehen\\n-Vladislav Balovatsky", "F\\u00fcr meine Tochter, der ich sp\\u00e4ter mal erz\\u00e4hlen kann\\nIhr Vater war ein Ehrenmann\\n-Anis M. Y. Ferchichi", "Nachts, da schlafe ich\\n-Deutscher Philosoph", "It wasn\'t me\\n-Orville Richard Burrell", "Und du bist, alles f\\u00fcr mich, alles das, was mir Angst macht\\nMeine silberne Kugel, mein Kryptonit und mein Anthrax\\n-Friedrich Kautz", "Jack-Daniel\'s-Eis, Hennessy und Johnnie Walker\\nIch komm\' voll besoffen in \'nem Gucci-Jogger\\n-Vladislav Balovatsky", "There is no such thing as too much duct tape\\n-Oli", "We are going so fast\\nBut time so slow\\n-Theory of Relativity", "D\\u00f6p, d\\u00f6p, d\\u00f6p, d\\u00f6p, d\\u00f6d\\u00f6d\\u00f6d\\u00f6d\\u00f6p\\nD\\u00f6, d\\u00f6d\\u00f6d\\u00f6p, d\\u00f6p, d\\u00f6d\\u00f6d\\u00f6d\\u00f6d\\u00f6p, d\\u00f6p\\n-Hans Peter Geerdes", "Skibadee, skibadanger\\nI am the rearranger\\n-Hans Peter Geerdes", "If we could only slow the time\\nWe would have forever every night\\n-Don Pepijn Schipper", "Meine Stra\\u00dfenpoesie l\\u00f6st die Chaostheorie\\n-Mousa Amouei", "Die Parabel sie steigt, und zwar exponentiell\\n-Mohamed El Moussaoui", "Chuba chuba chuba chuba chuba chuba chubby.\\nI don\'t have any lines to go right here, so chuby Teletubby\\n-Marshall Bruce Mathers III", "Two things are infinite: The universe and human stupidity;\\nand I\\u2018m not sure about the universe\\n-Albert E", "Physics is like sex: sure, it may give some practical results, but that\'s not why we do it.\\n-Richard P. Feynman", "I do not think you can name many great inventions that have been made by married men.\\n-Nikola Tesla", "Those who are not shocked when they first come across quantum theory cannot possibly have understood it.\\n-Niels Bohr", "We\\u2019re not free in what we do, because we\\u2019re not free in what we want.\\n-Jonas Kahnwald", "What we know is a drop. What we don\\u2019t know is an ocean.\\n-Isaac Newton", "Oh fate, you mysterious bitch\\nWhy you doing this to me\\n-Theodore \\"T-Bag\\" Bagwell", "We are captives of our own identities, living in prisons of our own creation.\\n-Theodore \\"T-Bag\\" Bagwell", "Preparation can only take you so far. \\nAfter that, you have to take a few leaps of faith.\\n-Michael Scofield", "Das ist der Sound f\\u00fcr die echten M\\u00e4nner, die das hier h\\u00f6ren, wenn sie Pressluft h\\u00e4mmern\\n-Tarek Ebene, Nico Seyfrid & Maxim Dr\\u00fcner"]';
-	function change_quote(){
-		quotes = JSON.parse(quotes_str);
-		quote = quotes[Math.floor(Math.random() * (quotes.length))];
-		quote = quote.replace(/(?:\r\n|\r|\n)/g, '<br>');;
-		document.getElementById("quote1").children[0].innerHTML = quote;
-		document.getElementById("quote2").children[0].innerHTML = quote;
-	}
-	change_quote();
+	window.onbeforeunload = function(){
+		return 'Are you sure you want to leave?';
+	};
 
 	// Register service worker to control making site work offline
 	if('serviceWorker' in navigator) {

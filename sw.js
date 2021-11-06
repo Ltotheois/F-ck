@@ -10,7 +10,6 @@ var filesToCache = [
 	'/Fck/Fck.html',
 	'/Fck/manifest.json',
 	'/Fck/fontawesome/webfonts/fa-regular-400.woff2',
-	'/Fck/roboto/roboto-v20-latin-regular.woff2',
 	'/Fck/fontawesome/webfonts/fa-solid-900.woff2',
 	'/Fck/title.png'
 ];

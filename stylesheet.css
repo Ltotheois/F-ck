@@ -100,19 +100,8 @@ html{
 	--tableHeadColor:		var(--color);
 	
 }
-/* roboto-regular - latin */
-@font-face {
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	src: url('roboto/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
-	src: local('Roboto'), local('Roboto-Regular'),
-		url('roboto/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('roboto/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-		url('roboto/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
-		url('roboto/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('roboto/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
-}
+
+
 ::-webkit-scrollbar {
 	display: none;
 }
@@ -135,7 +124,7 @@ body {
 html {
 	background-color:	var(--bg-color);
 	color:				var(--color);
-	font-family:		"Roboto";
+	font-family:		sans-serif;
 	position:			absolute;
 	min-height:			100%;
 	min-width:			100%;
@@ -177,7 +166,7 @@ table input{
 }
 
 table .real, table .wish{
-	width:				2ch;
+	width:				5ch;
 	font-family:		monospace;
 	text-align:			center;
 }
@@ -315,15 +304,6 @@ table .mistake {
 }
 
 
-.quote{
-	padding:				5px;
-	width:					100%;
-	background-color:		#80808026;
-	text-align:				center;
-	opacity:				0.8;
-	font-family:			monospace;
-	color:					var(--quote-color);
-}
 .action_icon_div{
 	display:				inline-block;
 	margin:					20px;
