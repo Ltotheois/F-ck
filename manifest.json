@@ -1,0 +1,17 @@
+{
+  "name": "F*ck",
+  "short_name": "F*ck",
+  "description": "Fun card game",
+  "start_url": "Fck.html",
+  "display": "fullscreen",
+  "background_color": "black",
+  "theme_color": "black",
+  "icons": [
+    {
+      "src": "title.png",
+      "sizes": "756x756",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}
