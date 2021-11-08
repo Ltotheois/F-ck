@@ -74,7 +74,7 @@
 		</div>
 	</div>
 
-	<div class="tile" id="analysis_tile" style="display: none;">
+	<div class="tile" id="analysis_tile" style="display: none; min-height: auto;">
 		<h2>Analysis</h2>
 		<div id="table_container_analysis">
 		</div>
@@ -84,10 +84,11 @@
 	var overlay = document.getElementById('overlay');
 	var tablebody = document.getElementById('table_body');
 	var rounds = "customrounds" in localStorage ? JSON.parse(localStorage.getItem("customrounds")) : [1,2,3,4,5,6,7,8,8,8,8,7,6,5,4,3,2,1];
-
-	console.log(rounds);
+	var analysiscontainer = document.getElementById("analysis_tile");
 
 	function newgame(rounds){
+		analysiscontainer.style.display = "none";
+
 		if (tablebody.innerHTML.trim() != ""){
 			if (!(confirm('Are you sure you want to start a new game and discard the current game?'))) {
 				return;
@@ -220,14 +221,98 @@
 		var score   = data.score;
 		var data    = data.data;
 		
-		<!-- Checke maximale Stichanzahl -->
-		<!-- Schaue pro Spieler wie oft Stich angesagt wurde und wie oft erfolgreich -->
-		<!-- Finde die höchste einzelne erfolgreiche Anzahl Stiche -->
-		<!-- Finde die höchste summierte erfolgreiche Anzahl Stiche -->
-		<!-- Tabelle und die einzelnen Highlights -->
+		var besthand = [0, []];
+		var maxhand = Math.max(...hands);
+		var hands   = {1: [], 2: [], 3: [], 4: []};
+		var rights  = {1: 0, 2: 0, 3: 0, 4: 0};
 		
-		window.alert("The game has finished.");
+		for (var i=1; i < 5; i++){
+			for (var j=0; j <= maxhand; j++){
+				hands[i].push([0, 0]);
+			}
+		}
 		
+		for (var i=0; i < data.length; i++){
+			for (var j=0; j < 4; j++){
+				var realvalue, wishvalue;
+				[realvalue, wishvalue] = data[i][j];
+
+				hands[j+1][wishvalue][1] += 1;
+				
+				if (realvalue == wishvalue){
+					hands[j+1][wishvalue][0] += 1;
+					rights[j+1] += wishvalue;
+					
+					if (wishvalue > besthand[0]){
+						besthand = [wishvalue, [j+1]];
+					} else if (wishvalue == besthand[0]){
+						besthand[1].push(j+1);
+					}
+				}
+			}
+		}
+		
+		var parent = document.getElementById("table_container_analysis");
+		parent.innerHTML = "";
+		var table  = document.createElement("table");
+		
+		var thead  = document.createElement("thead");
+		table.appendChild(thead);
+		var row    = document.createElement("tr");
+		thead.appendChild(row);
+		
+		var tmp     = document.createElement("th");
+		tmp.innerHTML = "#";
+		row.appendChild(tmp);
+		
+		for (var j = 1; j < 5; j++){
+			tmp = document.createElement("th");
+			tmp.innerHTML = players[j];
+			row.appendChild(tmp);
+		}
+		
+		var tbody = document.createElement("tbody");
+		table.appendChild(tbody);
+		
+		for (var rowi = 0; rowi <= maxhand; rowi++){
+			row = document.createElement("tr");
+			
+			tmp = document.createElement("td");
+			tmp.innerHTML = rowi;
+			row.appendChild(tmp);
+			
+			for (var j = 1; j < 5; j++){
+				tmp = document.createElement("td");
+				tmp.innerHTML = hands[j][rowi][0]+" / "+hands[j][rowi][1];
+				row.appendChild(tmp);
+			}
+			
+			tbody.appendChild(row);
+		}
+		
+		parent.appendChild(table);
+		
+		var maxpoints = Math.max(...Object.keys(score).map(x => score[x]));
+		var bestplayers = Object.keys(score).filter(x => score[x] == maxpoints).map(x => players[x]);
+		
+		var most = [0, []];		
+		for (var j = 1; j < 5; j++){
+			if (rights[j] == most[0]){
+				most[1].push(j);
+			} else if (rights[j] > most[0]){
+				most = [rights[j], [j]];
+			}
+		}
+		
+		var tmp = document.createElement("div");
+		tmp.id = "award_container";
+		parent.appendChild(tmp);
+		
+		tmp.innerHTML += "<div class='award'><i class='fas fa-trophy'></i><span>" + maxpoints + "</span><span>Winner</span><span>" + bestplayers.join(" and ") + "</span></div>";
+		tmp.innerHTML += "<div class='award'><i class='fas fa-award'></i><span>" + besthand[0] + "</span><span>Best Round</span><span>" + besthand[1].map(x => players[x]).join(" and ") + "</span></div>";
+		tmp.innerHTML += "<div class='award'><i class='fas fa-medal'></i><span>" + most[0] + "</span><span>Most Tricks</span><span>" + most[1].map(x => players[x]).join(" and ") + "</span></div>";
+		
+		analysiscontainer.style.display = "inline-block";
 	}
 
 	function save(){
