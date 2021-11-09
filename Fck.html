@@ -8,7 +8,7 @@
 <link href="fontawesome/css/all.css" rel="stylesheet">
 <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
 <link rel="apple-touch-icon" href="title.png"/>
-<title>F*ck</title>
+<title>F*cking - Card Game</title>
 </head>
 <body>
 	<div id="overlay" class="overlay">
@@ -47,14 +47,12 @@
 			
 	<div class="tile" id="table_tile">
 		<div class="dgrid">
-				<div>
-					<button class="button" onclick="toggle_overlay();">Menu</button>
-					<button class="button" onclick="newgame(rounds);">New Game</button>
+				<div style="display: flex; align-items: center;">
+					<span style="color: var(--input-border); font-weight: 700;">F*cking</span>
 				</div>
 				<div class="inline_icon_div">
-					<!-- <a class="clickable" onclick="document.getElementById('table').classList.toggle('hide_icons')"><i class="fa fa-eye-slash"></i></a> -->
-					<!-- <a class="clickable" onclick="document.getElementById('table_tile').classList.toggle('hide_cells')"><i class="fas fa-table"></i></a> -->
-					<!-- <a class="clickable" onclick="delete_row(all=true)"><i class="fas fa-trash"></i></a> -->
+					<button class="button" onclick="toggle_overlay();">Menu</button>
+					<button class="button" onclick="newgame(rounds);">New Game</button>
 				</div>
 			</div>
 		<div id="table_container">
@@ -74,7 +72,7 @@
 		</div>
 	</div>
 
-	<div class="tile" id="analysis_tile" style="display: none; min-height: auto;">
+	<div class="tile" id="analysis_tile" style="display: none;">
 		<h2>Analysis</h2>
 		<div id="table_container_analysis">
 		</div>

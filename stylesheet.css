@@ -305,7 +305,7 @@ table .mistake {
 	margin:					10px;
 	background-color:		var(--tile-bg-color);
 	color:					var(--tile-color);
-	min-height:				300px;
+	min-height:				auto;
 	min-width:				min-content;
 	padding:				10px;
 	box-shadow:				var(--tile-shadow);
