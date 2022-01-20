@@ -1,4 +1,4 @@
-// version 1.00
+// version 1.01
 // change version to reinstall service worker and update Files
 
 var cacheName = 'cache_fck';

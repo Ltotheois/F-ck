@@ -1,3 +1,3 @@
-# # F*ck
-This repository provides a digital version for the scoring of the card game
+# F*ck
+This is a digital scoring sheet for the card game of the same name. Go to the [scoring sheet](https://ltotheois.github.io/Fck/Fck.html).
 

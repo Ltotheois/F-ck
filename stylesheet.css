@@ -211,7 +211,8 @@ table .mistake {
 	justify-content:	center;
 	align-items: 		center;
 	border-radius:		2%;
-	background:			var(--input-border);
+	background:			#5d7dd6;
+	color:				white;
 }
 
 .award i {
