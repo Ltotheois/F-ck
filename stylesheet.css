@@ -180,6 +180,11 @@ table .mistake {
 	color:				red;
 }
 
+thead {
+	position: sticky;
+	top: 0px;
+} 
+
 #analysis_tile, #table_tile {
 	max-width:			1000px;
 	width:				calc(100% - 20px);

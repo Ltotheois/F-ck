@@ -84,7 +84,7 @@
 	<script>
 	var overlay = document.getElementById('overlay');
 	var tablebody = document.getElementById('table_body');
-	var rounds = "customrounds" in localStorage ? JSON.parse(localStorage.getItem("customrounds")) : [1,2,3,4,5,6,7,8,8,8,8,7,6,5,4,3,2,1];
+	var rounds = "customrounds" in localStorage ? JSON.parse(localStorage.getItem("customrounds")) : [1,1,1,1,2,3,4,5,6,7,8,8,8,8,7,6,5,4,3,2,1,1,1,1];
 	var analysiscontainer = document.getElementById("analysis_tile");
 
 	function newgame(rounds){
@@ -105,7 +105,7 @@
 			
 			for (var i=1; i < 5; i++){
 				tmp = document.createElement("td");
-				tmp.innerHTML = '<input inputmode="numeric" class="real"/>/<input inputmode="numeric" class="wish"/><span class="score"></span>';
+				tmp.innerHTML = '<input type="number" min="0" inputmode="numeric" class="real"/>/<input type="number" min="0" inputmode="numeric" class="wish"/><span class="score"></span>';
 				row.appendChild(tmp);
 			}
 			
